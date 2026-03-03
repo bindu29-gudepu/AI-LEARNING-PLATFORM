@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Study Notes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* This style preserves line breaks in the text */
+        .note-content {
+            white-space: pre-wrap; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .note-card {
+            background: #fff;
+            border: 1px solid #e1e1e1;
+            border-left: 5px solid #17a2b8;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Study Notes (Class 9-12)</h1>
+    
+    <div class="nav-bar">
+        <a href="/">Home</a>
+        <a href="/videos">Videos</a>
+        <a href="/notes">Notes</a>
+        <a href="/quizzes">Quizzes</a>
+        <a href="/dashboard">Admin</a>
+    </div>
+
+    {% if notes|length == 0 %}
+        <p style="text-align:center; color:#777;">No notes uploaded yet. Go to Admin to add content.</p>
+    {% endif %}
+
+    <!-- Notes List -->
+    {% for note in notes %}
+    <div class="note-card">
+        <span style="background: #e3f2fd; color: #1565c0; padding: 5px 10px; border-radius: 15px; font-size: 12px; font-weight: bold;">
+            {{ note[2] }}
+        </span>
+        <h3 style="margin-top: 10px;">{{ note[1] }}</h3>
+        <hr style="border: 0; border-top: 1px solid #eee;">
+        <!-- The note-content class applies the formatting -->
+        <p class="note-content">{{ note[3] }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
