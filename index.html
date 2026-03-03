@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Learning Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>AI Personalized Learning Platform</h1>
+    <div class="nav-bar">
+        <a href="/">Home</a>
+        <a href="/videos">Videos</a>
+        <a href="/notes">Notes</a>
+        <a href="/quizzes">Quizzes</a>
+        <a href="/results-dashboard">Leaderboard</a>
+    </div>
+
+    <h3>Student Profile Assessment</h3>
+    <form action="/submit" method="POST">
+        <label>Student Name</label>
+        <input type="text" name="name" required>
+
+        <label>Grade/Class</label>
+        <input type="text" name="grade" placeholder="e.g., 9 or 12" required>
+
+        <label>Subject Interest</label>
+        <select name="subject" required>
+            <option>Math</option>
+            <option>Physics</option>
+            <option>Chemistry</option>
+        </select>
+
+        <label>Learning Goal</label>
+        <select name="goal" required>
+            <option>Board Exam Preparation</option>
+            <option>Certification Preparation</option>
+            <option>Improve Skills</option>
+        </select>
+
+        <label>Current Skill Level</label>
+        <select name="level" required>
+            <option>Weak</option>
+            <option>Beginner</option>
+            <option>Intermediate</option>
+        </select>
+
+        <label>Preferred Learning Style</label>
+        <select name="preference" required>
+            <option>Video</option>
+            <option>Text</option>
+            <option>Quiz</option>
+        </select>
+
+        <button type="submit">Generate AI Recommendation</button>
+    </form>
+</div>
+</body>
+</html>
