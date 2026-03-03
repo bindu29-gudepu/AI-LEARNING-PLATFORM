@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Certificate of Completion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .cert-body {
+            border: 10px solid #2c3e50;
+            padding: 40px;
+            text-align: center;
+            background: white;
+            position: relative;
+        }
+        .cert-body h1 { color: #2c3e50; font-size: 36px; margin-bottom: 0; }
+        .cert-body h2 { color: #e67e22; font-size: 24px; margin-top: 10px; }
+        .cert-body p { font-size: 18px; color: #555; }
+        .badge { font-size: 40px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="cert-body">
+        <span class="badge">🏆</span>
+        <h1>Certificate of Completion</h1>
+        <p>This is to certify that</p>
+        
+        <h2>{{ result[1] }}</h2> <!-- Student Name -->
+        
+        <p>has successfully completed the course</p>
+        
+        <h2>{{ result[2] }}</h2> <!-- Course Name -->
+        
+        <p>with a grade of <strong>{{ result[4] }}</strong></p>
+        <p>Score: <strong>{{ result[3] }}%</strong></p>
+        
+        <br>
+        <p>Date: {{ result[6] }}</p>
+        <br>
+        
+        <div style="border-top: 1px solid #ccc; width: 200px; margin: 0 auto; padding-top: 10px;">
+            <small>AI Learning Platform</small>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <button onclick="window.print()" class="link-btn" style="border: none; cursor: pointer;">Print Certificate</button>
+    </div>
+</div>
+
+</body>
+</html>
