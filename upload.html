@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin - Upload Content</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Admin: Upload Content</h2>
+
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+        <a href="/">Home</a>
+        <a href="/videos">View Videos</a>
+        <a href="/notes">View Notes</a>
+        <a href="/quizzes">View Quizzes</a>
+        <a href="/dashboard">Session Logs</a>
+    </div>
+
+    <!-- Success Message Display -->
+    {% if message %}
+        <div style="background: #d4edda; color: #155724; padding: 10px; border-radius: 5px; margin-bottom: 20px; text-align: center;">
+            {{ message }}
+        </div>
+    {% endif %}
+
+    <!-- Upload Form -->
+    <form action="/admin/upload" method="POST">
+
+        <label>Content Type</label>
+        <select name="content_type" id="content_type" onchange="toggleFields()" required>
+            <option value="video">Video Lecture</option>
+            <option value="note">Study Note</option>
+            <option value="quiz">Quiz</option>
+        </select>
+
+        <label>Title</label>
+        <input type="text" name="title" placeholder="e.g., Introduction to Algebra" required>
+
+        <label>Subject</label>
+        <input type="text" name="subject" placeholder="e.g., Math, Physics, Chemistry" required>
+
+        <!-- Dynamic Fields -->
+        <div id="video-field">
+            <label>Video URL</label>
+            <input type="text" name="url" placeholder="https://www.youtube.com/watch?v=...">
+        </div>
+
+        <div id="note-field" style="display: none;">
+            <label>Note Content</label>
+            <textarea name="content" rows="6" placeholder="Enter the study notes here..."></textarea>
+        </div>
+
+        <div id="quiz-field" style="display: none;">
+            <label>Quiz Questions</label>
+            <textarea name="questions" rows="6" placeholder="Enter questions here..."></textarea>
+        </div>
+
+        <button type="submit" style="margin-top: 20px;">Upload Content</button>
+    </form>
+</div>
+
+<script>
+    function toggleFields() {
+        var type = document.getElementById("content_type").value;
+        document.getElementById("video-field").style.display = (type === 'video') ? 'block' : 'none';
+        document.getElementById("note-field").style.display = (type === 'note') ? 'block' : 'none';
+        document.getElementById("quiz-field").style.display = (type === 'quiz') ? 'block' : 'none';
+    }
+    toggleFields();
+</script>
+
+</body>
+</html>
